@@ -4,3 +4,6 @@ __pycache__
 .venv
 temp_*
 audio/*
+practice.py
+*.txt
+*.rttm

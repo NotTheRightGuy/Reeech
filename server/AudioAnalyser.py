@@ -12,12 +12,32 @@ class AudioAnalyser:
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
 
+    def prettify_diarization(self, diarization):
+        speakers = list(diarization.labels())
+        segments = []
+
+        for segment, track, speaker in diarization.itertracks(yield_label=True):
+            segments.append(
+                {
+                    "start": float(segment.start),
+                    "end": float(segment.end),
+                    "speaker": f"Speaker_{speakers.index(speaker) + 1}",
+                }
+            )
+
+        return {
+            "speakers": [f"Speaker_{i+1}" for i in range(len(speakers))],
+            "segments": segments,
+        }
+
     def get_diarization(self, audio_path):
         pipeline = Pipeline.from_pretrained(
             "pyannote/speaker-diarization-3.1", use_auth_token=self.hugging_face_token
         )
+
+        pipeline.to(torch.device(self.device))
         diarization = pipeline(audio_path)
-        return diarization
+        return self.prettify_diarization(diarization)
 
     def get_transcription(self, audio_path, model_id="distil-whisper/distil-small.en"):
         model = AutoModelForSpeechSeq2Seq.from_pretrained(

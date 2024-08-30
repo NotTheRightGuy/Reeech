@@ -8,7 +8,8 @@ import concurrent.futures
 app = FastAPI()
 
 # Initialize AudioAnalyser with your Hugging Face token
-HUGGING_FACE_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
+# HUGGING_FACE_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
+audio_analyser = AudioAnalyser("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")
 
 
 class AnalysisResponse(BaseModel):
@@ -94,7 +95,7 @@ async def analyze_audio(file: UploadFile = File(...)):
         os.remove(temp_file_path)
 
 
-@app.post("/diarization", response_model=DiarizationResponse)
+@app.post("/diarization", response_model=dict)
 async def get_diarization(file: UploadFile = File(...)):
     start_time = time.time()
 
@@ -110,7 +111,7 @@ async def get_diarization(file: UploadFile = File(...)):
         diarization = audio_analyser.get_diarization(temp_file_path)
         time_taken = time.time() - start_time
 
-        return DiarizationResponse(diarization=diarization, time_taken=time_taken)
+        return {"diarization": diarization, "time_taken": time_taken}
 
     finally:
         os.remove(temp_file_path)

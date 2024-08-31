@@ -3,9 +3,25 @@
 import React, { useRef, useEffect, useState } from "react";
 import { TbRewindForward5, TbRewindBackward5 } from "react-icons/tb";
 import { FaRegCirclePlay, FaRegCirclePause } from "react-icons/fa6";
-import { VscDebugRestart } from "react-icons/vsc";
 
-const AudioVisualizer: React.FC = () => {
+interface AudioVisualizerProps {
+    speaker: "speaker1" | "speaker2" | "none";
+    data: {
+        segments: {
+            start: number;
+            end: number;
+            speaker: string;
+            text: string;
+        }[];
+    };
+    onTimeUpdate: (time: number) => void;
+}
+
+const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
+    speaker,
+    data,
+    onTimeUpdate,
+}) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const audioRef = useRef<HTMLAudioElement>(null);
     const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
@@ -15,6 +31,7 @@ const AudioVisualizer: React.FC = () => {
     const [isHovering, setIsHovering] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [currentSpeaker, setCurrentSpeaker] = useState<string>(speaker);
 
     useEffect(() => {
         if (audioContext && analyser && canvasRef.current) {
@@ -37,8 +54,15 @@ const AudioVisualizer: React.FC = () => {
                         0,
                         canvas.height
                     );
-                    gradient.addColorStop(0, "rgba(0, 255, 0, 0.8)");
-                    gradient.addColorStop(1, "rgba(0, 128, 0, 0.8)");
+
+                    // Change gradient colors based on current speaker
+                    if (currentSpeaker === "Speaker_1") {
+                        gradient.addColorStop(0, "rgba(0, 0, 255, 0.8)"); // Blue
+                        gradient.addColorStop(1, "rgba(0, 0, 128, 0.8)");
+                    } else {
+                        gradient.addColorStop(0, "rgba(255, 0, 0, 0.8)"); // Red
+                        gradient.addColorStop(1, "rgba(128, 0, 0, 0.8)");
+                    }
 
                     const barWidth = (canvas.width / bufferLength) * 4;
                     let x = 0;
@@ -85,13 +109,15 @@ const AudioVisualizer: React.FC = () => {
                 window.removeEventListener("keydown", handleKeyDown);
             };
         }
-    }, [audioContext, analyser, isAudioLoaded]);
+    }, [audioContext, analyser, isAudioLoaded, currentSpeaker]);
 
     useEffect(() => {
         const audio = audioRef.current;
         if (audio) {
             const updateTime = () => {
-                setCurrentTime(audio.currentTime);
+                const newTime = audio.currentTime;
+                setCurrentTime(newTime);
+                onTimeUpdate(newTime);
             };
 
             audio.addEventListener("timeupdate", updateTime);
@@ -99,11 +125,26 @@ const AudioVisualizer: React.FC = () => {
                 setDuration(audio.duration);
             });
 
+            const updateSpeaker = () => {
+                if (audioRef.current) {
+                    const currentTime = audioRef.current.currentTime;
+                    const segment = data.segments.find(
+                        (seg) =>
+                            currentTime >= seg.start && currentTime < seg.end
+                    );
+                    if (segment) {
+                        setCurrentSpeaker(segment.speaker);
+                    }
+                }
+            };
+
+            audio.addEventListener("timeupdate", updateSpeaker);
             return () => {
                 audio.removeEventListener("timeupdate", updateTime);
+                audio.removeEventListener("timeupdate", updateSpeaker);
             };
         }
-    }, []);
+    }, [data.segments, onTimeUpdate]);
 
     const handleAudioUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -222,6 +263,11 @@ const AudioVisualizer: React.FC = () => {
                         <TbRewindForward5 />
                     </button>
                 </div>
+            </div>
+            <div className="mt-2 text-center">
+                <span className="font-outfit text-sm">
+                    Current Speaker: {currentSpeaker}
+                </span>
             </div>
         </div>
     );

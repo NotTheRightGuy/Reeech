@@ -21,6 +21,7 @@ const config = {
         extend: {
             fontFamily: {
                 sans: ["var(--font-sans)", ...fontFamily.sans],
+                outfit: ["Outfit", "sans-serif"],
             },
             keyframes: {
                 "accordion-down": {

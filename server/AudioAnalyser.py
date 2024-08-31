@@ -2,6 +2,7 @@ import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import librosa
 from pyannote.audio import Pipeline
+import soundfile as sf
 
 
 class AudioAnalyser:
@@ -13,45 +14,24 @@ class AudioAnalyser:
         self.transcribe_model_id = "distil-whisper/distil-small.en"
         self.diarization_model_id = "pyannote/speaker-diarization-3.1"
 
-        self.asr_model = AutoModelForSpeechSeq2Seq.from_pretrained(
-            self.transcribe_model_id,
+    def get_transcription(self, audio_path, model_id="distil-whisper/distil-small.en"):
+        model = AutoModelForSpeechSeq2Seq.from_pretrained(
+            model_id,
             torch_dtype=self.torch_dtype,
             low_cpu_mem_usage=True,
             use_safetensors=True,
-        ).to(self.device)
-        self.asr_processor = AutoProcessor.from_pretrained(self.transcribe_model_id)
-        self.asr_pipe = pipeline(
+        )
+        processor = AutoProcessor.from_pretrained(model_id)
+        pipe = pipeline(
             "automatic-speech-recognition",
-            model=self.asr_model,
-            tokenizer=self.asr_processor.tokenizer,
-            feature_extractor=self.asr_processor.feature_extractor,
+            model=model,
+            tokenizer=processor.tokenizer,
+            feature_extractor=processor.feature_extractor,
             torch_dtype=self.torch_dtype,
             device=self.device,
         )
-        self.init_asr_pipeline()
-
-    def init_asr_pipeline(self):
-        self.asr_model = AutoModelForSpeechSeq2Seq.from_pretrained(
-            self.transcribe_model_id,
-            torch_dtype=self.torch_dtype,
-            low_cpu_mem_usage=True,
-            use_safetensors=True,
-        ).to(self.device)
-        self.asr_processor = AutoProcessor.from_pretrained(self.transcribe_model_id)
-        self.asr_pipe = pipeline(
-            "automatic-speech-recognition",
-            model=self.asr_model,
-            tokenizer=self.asr_processor.tokenizer,
-            feature_extractor=self.asr_processor.feature_extractor,
-            torch_dtype=self.torch_dtype,
-            device=self.device,
-        )
-
-    def transcribe_segment(self, audio_array, start, end, sr):
-        segment = audio_array[int(start * sr) : int(end * sr)]
-        # Save the first segment to a temporary file for listening
-        librosa.output.write_wav("temp.wav", segment, sr)
-        return self.asr_pipe(segment)["text"].strip()
+        result = pipe(audio_path)
+        return result
 
     def get_diarization(self, audio_path):
 
@@ -83,27 +63,29 @@ class AudioAnalyser:
             "segments": segments,
         }
 
+    def transcribe_segment(self, audio_array, start, end, sr):
+        segment = audio_array[int(start * sr) : int(end * sr)]
+        sf.write(f"temp/segment_{start}_{end}.wav", segment, sr)
+        temp_file_path = f"temp/segment_{start}_{end}.wav"
+        transcription = self.get_transcription(temp_file_path)
+        return transcription["text"].strip()
+
     def get_diarization_with_transcription(self, audio_path):
-        # Load the audio file
         audio_array, sr = librosa.load(audio_path, sr=None)
 
-        # Get diarization
         diarization_pipeline = Pipeline.from_pretrained(
             self.diarization_model_id, use_auth_token=self.hugging_face_token
         )
         diarization_pipeline.to(torch.device(self.device))
         diarization = diarization_pipeline(audio_path)
 
-        # Prepare the result
         speakers = list(diarization.labels())
         segments = []
 
-        # Process each segment
         for segment, track, speaker in diarization.itertracks(yield_label=True):
             start = segment.start
             end = segment.end
 
-            # Transcribe the current segment
             text = self.transcribe_segment(audio_array, start, end, sr)
 
             segments.append(
@@ -119,27 +101,6 @@ class AudioAnalyser:
             "speakers": [f"Speaker_{i+1}" for i in range(len(speakers))],
             "segments": segments,
         }
-
-    def get_transcription(self, audio_path, model_id="distil-whisper/distil-small.en"):
-        from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
-
-        model = AutoModelForSpeechSeq2Seq.from_pretrained(
-            model_id,
-            torch_dtype=self.torch_dtype,
-            low_cpu_mem_usage=True,
-            use_safetensors=True,
-        )
-        processor = AutoProcessor.from_pretrained(model_id)
-        pipe = pipeline(
-            "automatic-speech-recognition",
-            model=model,
-            tokenizer=processor.tokenizer,
-            feature_extractor=processor.feature_extractor,
-            torch_dtype=self.torch_dtype,
-            device=self.device,
-        )
-        result = pipe(audio_path)
-        return result
 
     def get_sentiment(self, text):
         from nltk.tokenize import sent_tokenize

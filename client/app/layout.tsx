@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,10 +39,10 @@ export default function RootLayout({
             <body
                 className={clsx(
                     inter.className,
-                    "relative min-h-screen antialiased font-sans bg-background"
+                    "relative min-h-screen antialiased font-outfit bg-background"
                 )}
             >
-                {children}
+                <TooltipProvider>{children}</TooltipProvider>
             </body>
         </html>
     );

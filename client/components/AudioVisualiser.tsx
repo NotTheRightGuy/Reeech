@@ -15,82 +15,109 @@ interface AudioVisualizerProps {
         }[];
     };
     onTimeUpdate: (time: number) => void;
-    currentTime: number;
-    audioSrc: string; // New prop for audio source
 }
 
 const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
     speaker,
     data,
     onTimeUpdate,
-    currentTime,
-    audioSrc,
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const audioRef = useRef<HTMLAudioElement>(null);
-    const audioContextRef = useRef<AudioContext | null>(null);
-    const analyserRef = useRef<AnalyserNode | null>(null);
-    const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);
+    const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
+    const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isAudioLoaded, setIsAudioLoaded] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [currentSpeaker, setCurrentSpeaker] = useState<string>(speaker);
 
     useEffect(() => {
-        const audio = audioRef.current;
-        if (!audio) return;
+        if (audioContext && analyser && canvasRef.current) {
+            const canvas = canvasRef.current;
+            const canvasCtx = canvas.getContext("2d");
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
 
-        audio.src = audioSrc;
-        audio.load();
+            const draw = () => {
+                requestAnimationFrame(draw);
 
-        const setupAudio = () => {
-            if (!audioContextRef.current) {
-                audioContextRef.current = new (window.AudioContext ||
-                    (window as any).webkitAudioContext)();
-            }
+                analyser.getByteFrequencyData(dataArray);
 
-            if (!analyserRef.current) {
-                analyserRef.current = audioContextRef.current.createAnalyser();
-            }
+                if (canvasCtx) {
+                    canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
-            if (!sourceRef.current) {
-                sourceRef.current =
-                    audioContextRef.current.createMediaElementSource(audio);
-                sourceRef.current.connect(analyserRef.current);
-                analyserRef.current.connect(
-                    audioContextRef.current.destination
-                );
-            }
+                    const gradient = canvasCtx.createLinearGradient(
+                        0,
+                        0,
+                        0,
+                        canvas.height
+                    );
 
-            setIsAudioLoaded(true);
-        };
+                    // Change gradient colors based on current speaker
+                    if (currentSpeaker === "Speaker_1") {
+                        gradient.addColorStop(0, "rgba(0, 0, 255, 0.8)"); // Blue
+                        gradient.addColorStop(1, "rgba(0, 0, 128, 0.8)");
+                    } else {
+                        gradient.addColorStop(0, "rgba(255, 0, 0, 0.8)"); // Red
+                        gradient.addColorStop(1, "rgba(128, 0, 0, 0.8)");
+                    }
 
-        audio.onloadedmetadata = () => {
-            setDuration(audio.duration);
-            setupAudio();
-        };
+                    const barWidth = (canvas.width / bufferLength) * 4;
+                    let x = 0;
 
-        audio.onended = () => setIsPlaying(false);
+                    for (let i = 0; i < bufferLength; i++) {
+                        const barHeight = isAudioLoaded
+                            ? Math.max(dataArray[i] / 2, 1)
+                            : 1;
 
-        return () => {
-            if (sourceRef.current) {
-                sourceRef.current.disconnect();
-            }
-            if (analyserRef.current) {
-                analyserRef.current.disconnect();
-            }
-            if (audioContextRef.current) {
-                audioContextRef.current.close();
-            }
-        };
-    }, [audioSrc]);
+                        canvasCtx.fillStyle = gradient;
+                        canvasCtx.beginPath();
+                        canvasCtx.roundRect(
+                            x,
+                            canvas.height / 2 - barHeight / 2,
+                            barWidth,
+                            barHeight,
+                            5
+                        );
+                        canvasCtx.fill();
+
+                        x += barWidth + 2.5;
+                    }
+                }
+            };
+
+            draw();
+
+            // Add keyboard shortcuts
+            const handleKeyDown = (event: KeyboardEvent) => {
+                if (event.key === " ") {
+                    togglePlayPause();
+                } else if (event.key === "ArrowRight") {
+                    skipForward();
+                } else if (event.key === "ArrowLeft") {
+                    skipBackward();
+                } else if (event.key === "r") {
+                    restartAudio();
+                }
+            };
+
+            window.addEventListener("keydown", handleKeyDown);
+
+            return () => {
+                window.removeEventListener("keydown", handleKeyDown);
+            };
+        }
+    }, [audioContext, analyser, isAudioLoaded, currentSpeaker]);
 
     useEffect(() => {
         const audio = audioRef.current;
         if (audio) {
             const updateTime = () => {
-                onTimeUpdate(audio.currentTime);
+                const newTime = audio.currentTime;
+                setCurrentTime(newTime);
+                onTimeUpdate(newTime);
             };
 
             audio.addEventListener("timeupdate", updateTime);
@@ -119,18 +146,33 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
         }
     }, [data.segments, onTimeUpdate]);
 
-    useEffect(() => {
-        const audio = audioRef.current;
-        if (audio) {
-            const handleTimeUpdate = () => {
-                onTimeUpdate(audio.currentTime);
-            };
-            audio.addEventListener("timeupdate", handleTimeUpdate);
-            return () => {
-                audio.removeEventListener("timeupdate", handleTimeUpdate);
-            };
+    const handleAudioUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            const audio = audioRef.current;
+            if (audio) {
+                audio.src = URL.createObjectURL(file);
+                audio.load();
+                audio.play();
+
+                const audioCtx = new (window.AudioContext ||
+                    (window as any).webkitAudioContext)();
+                const analyserNode = audioCtx.createAnalyser();
+                const source = audioCtx.createMediaElementSource(audio);
+                source.connect(analyserNode);
+                analyserNode.connect(audioCtx.destination);
+
+                setAudioContext(audioCtx);
+                setAnalyser(analyserNode);
+                setIsPlaying(true);
+                setIsAudioLoaded(true);
+
+                audio.onended = () => {
+                    setIsPlaying(false);
+                };
+            }
         }
-    }, [onTimeUpdate]);
+    };
 
     const formatTime = (time: number) => {
         const minutes = Math.floor(time / 60);
@@ -174,10 +216,16 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
     };
 
     return (
-        <div className="flex flex-col border rounded-lg px-4 py-2 h-fit bg-white">
+        <div className="flex flex-col items-center bg-white rounded-md border p-4">
+            <input
+                type="file"
+                accept="audio/*"
+                onChange={handleAudioUpload}
+                className="mb-4 p-2 rounded"
+            />
             <audio ref={audioRef} className="hidden" controls />
             <div
-                className="relative w-full max-w-3xl"
+                className="relative w-full"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
             >
@@ -187,37 +235,37 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
                 ></canvas>
 
                 <div className="flex justify-between items-center w-full mt-2">
-                    <span className="text-sm text-gray-500 font-bold font-mono">
+                    <span className="text-sm text-gray-600 font-bold font-mono">
                         {formatTime(currentTime)}
                     </span>
-                    <span className="text-sm text-gray-500 font-bold font-mono">
+                    <span className="text-sm text-gray-600 font-bold font-mono">
                         {formatTime(duration)}
                     </span>
                 </div>
 
-                <div className="flex items-center justify-center mt-4 rounded-lg">
+                <div className="flex items-center justify-center mt-4 space-x-6">
                     <button
                         onClick={skipBackward}
-                        className="text-3xl mx-4 text-orange-400 hover:text-orange-600 transition-colors duration-300"
+                        className="text-3xl text-orange-400 hover:text-orange-600 transition-colors duration-300"
                     >
                         <TbRewindBackward5 />
                     </button>
                     <button
                         onClick={togglePlayPause}
-                        className="text-4xl mx-4 text-orange-400 rounded-full hover:text-orange-600 transition-colors duration-300"
+                        className="text-5xl text-orange-400 hover:text-orange-600 transition-colors duration-300"
                     >
                         {isPlaying ? <FaRegCirclePause /> : <FaRegCirclePlay />}
                     </button>
                     <button
                         onClick={skipForward}
-                        className="text-3xl mx-4 text-orange-400 hover:text-orange-600 transition-colors duration-300"
+                        className="text-3xl text-orange-400 hover:text-orange-600 transition-colors duration-300"
                     >
                         <TbRewindForward5 />
                     </button>
                 </div>
             </div>
-            <div className="mt-2 text-center">
-                <span className="font-outfit text-sm">
+            <div className="mt-4 text-center">
+                <span className="font-outfit text-sm bg-gray-100 px-3 py-1 rounded-full">
                     Current Speaker: {currentSpeaker}
                 </span>
             </div>

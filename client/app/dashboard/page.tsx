@@ -91,9 +91,10 @@ export default function Dashboard() {
             );
             const data = await response.json();
             setFiles(data.files);
-            toast.info("Files statuses fetched successfully");
+            toast.success("Files fetched successfully");
         } catch (error) {
             console.error("Error fetching file statuses:", error);
+            toast.error("Error fetching files");
         }
     };
 

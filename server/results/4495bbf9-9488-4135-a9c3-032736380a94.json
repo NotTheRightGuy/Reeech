@@ -1,0 +1,785 @@
+{
+    "segments": [
+        {
+            "start": 3.0853437500000003,
+            "end": 6.865343750000001,
+            "speaker": "Speaker_2",
+            "text": "Okay, so what about the exit? When and how to exit?",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.725,
+                "pos": 0.275,
+                "compound": 0.2263
+            }
+        },
+        {
+            "start": 7.69221875,
+            "end": 9.83534375,
+            "speaker": "Speaker_1",
+            "text": "Man, you shouldn't ask me because I never sold my company.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "start": 10.341593750000001,
+            "end": 10.594718750000002,
+            "speaker": "Speaker_2",
+            "text": "And",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "start": 10.594718750000002,
+            "end": 10.99971875,
+            "speaker": "Speaker_1",
+            "text": "I've never",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "start": 10.662218750000001,
+            "end": 13.446593750000002,
+            "speaker": "Speaker_2",
+            "text": "You've never, all the successful stuff you've done, you've never sold it.",
+            "sentiment": {
+                "neg": 0.218,
+                "neu": 0.782,
+                "pos": 0.0,
+                "compound": -0.4717
+            }
+        },
+        {
+            "start": 13.750343750000003,
+            "end": 15.184718750000002,
+            "speaker": "Speaker_1",
+            "text": "Yeah, it's kind of sad, right? Like.",
+            "sentiment": {
+                "neg": 0.354,
+                "neu": 0.417,
+                "pos": 0.229,
+                "compound": -0.2944
+            }
+        },
+        {
+            "start": 15.707843750000002,
+            "end": 53.17034375,
+            "speaker": "Speaker_1",
+            "text": "I've been in, so I've been in a lot of acquisition like deals and stuff and I learn a lot about finance people as well there like manipulation and due diligence and then changing the valuation like people change the valuation after so they a lot of people string you on to acquire you and then it takes like six months it's like six to 12 months they want to see everything they want to see the your stripe and your code and whatever and then in the end they'll change the price to lower because you're already invested. So it's like a negotiation tactic, right? And like no, I don't want to sell, right? And the problem with my companies is like they make...",
+            "sentiment": {
+                "neg": 0.041,
+                "neu": 0.797,
+                "pos": 0.161,
+                "compound": 0.8689
+            }
+        },
+        {
+            "start": 53.845343750000005,
+            "end": 55.431593750000005,
+            "speaker": "Speaker_1",
+            "text": "90% profit margin.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.408,
+                "pos": 0.592,
+                "compound": 0.4404
+            }
+        },
+        {
+            "start": 55.836593750000006,
+            "end": 57.16971875,
+            "speaker": "Speaker_1",
+            "text": "So the multiple.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "start": 57.540968750000005,
+            "end": 61.000343750000006,
+            "speaker": "Speaker_1",
+            "text": "companies get sold with multiple kinds of multiples of profit or revenue.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.791,
+                "pos": 0.209,
+                "compound": 0.4404
+            }
+        },
+        {
+            "start": 61.135343750000004,
+            "end": 67.91909375,
+            "speaker": "Speaker_1",
+            "text": "and often the multiple is like three times, three times or four times or five times, revenue or profit. So in my case.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.759,
+                "pos": 0.241,
+                "compound": 0.6597
+            }
+        },
+        {
+            "start": 68.96534375,
+            "end": 78.49971875,
+            "speaker": "Speaker_1",
+            "text": "they're all automated so I might as well wait three years and I get the same money as when I sell and then I can still sell the same company. You know, I mean, I can still sell for three five times. So.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.914,
+                "pos": 0.086,
+                "compound": 0.3321
+            }
+        },
+        {
+            "start": 78.97221875000001,
+            "end": 81.36846875,
+            "speaker": "Speaker_1",
+            "text": "financially it doesn't really make sense to sell.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "start": 81.95909375000001,
+            "end": 82.06034375,
+            "speaker": "Speaker_1",
+            "text": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 82.06034375,
+            "end": 82.16159375000001,
+            "speaker": "Speaker_2",
+            "text": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 82.16159375000001,
+            "end": 82.17846875000001,
+            "speaker": "Speaker_1",
+            "text": "Okay.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.2263
+            }
+        },
+        {
+            "start": 82.17846875000001,
+            "end": 82.24596875,
+            "speaker": "Speaker_2",
+            "text": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 82.24596875,
+            "end": 82.26284375,
+            "speaker": "Speaker_1",
+            "text": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 82.26284375,
+            "end": 82.29659375,
+            "speaker": "Speaker_2",
+            "text": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 82.29659375,
+            "end": 91.24034375000001,
+            "speaker": "Speaker_1",
+            "text": "Unless the price high enough, like if the price gets to like six or seven or eight, I don't want to wait six years for the money, you know? But if you give me three, like three years nothing, like, I can wait.",
+            "sentiment": {
+                "neg": 0.039,
+                "neu": 0.801,
+                "pos": 0.16,
+                "compound": 0.5828
+            }
+        },
+        {
+            "start": 91.67909375,
+            "end": 102.86721875,
+            "speaker": "Speaker_2",
+            "text": "So I mean, they're really valuable stuff about the companies you create is not just the interface and the crowdsourced content, but the people themselves, like the user base.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.781,
+                "pos": 0.219,
+                "compound": 0.7181
+            }
+        },
+        {
+            "start": 102.86721875,
+            "end": 105.26346875,
+            "speaker": "Speaker_1",
+            "text": "Yeah, but nominalist, it's a community, yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.476,
+                "pos": 0.524,
+                "compound": 0.5267
+            }
+        },
+        {
+            "start": 102.88409375,
+            "end": 103.30596875,
+            "speaker": "Speaker_2",
+            "text": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 103.40721875000001,
+            "end": 104.03159375000001,
+            "speaker": "Speaker_2",
+            "text": "So no one",
+            "sentiment": {
+                "neg": 0.555,
+                "neu": 0.445,
+                "pos": 0.0,
+                "compound": -0.3597
+            }
+        },
+        {
+            "start": 105.26346875,
+            "end": 108.68909375000001,
+            "speaker": "Speaker_2",
+            "text": "So I could see that being extremely valuable. I'm surprised I had not.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.639,
+                "pos": 0.361,
+                "compound": 0.5256
+            }
+        },
+        {
+            "start": 107.62596875000001,
+            "end": 146.32034375,
+            "speaker": "Speaker_1",
+            "text": "I'm surprised I have not. It's like my baby. It's like my first product that took off. I don't really know if I want to sell it. It's like something you will be nice when you're old that you're still working on this. It's like a, it has like a mission which is like people should travel anywhere, people should travel anywhere, and they can work from, from anywhere and they can meet different cultures and that's a good way to make the world get better. If you go to China, live in China, you'll learn that they're nice people and a lot of stuff you hear about China's probably gone, a lot of stuff is true as well, but it's more, you know, you learn a lot from traveling and I think that's why it's like a cool product to like not sell... I have less emotional feeling with AI projects like photo like photo I, which I could sell, yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.612,
+                "pos": 0.388,
+                "compound": 0.2263
+            }
+        },
+        {
+            "start": 113.38034375000001,
+            "end": 113.63346875,
+            "speaker": "Speaker_2",
+            "text": "something",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "start": 146.80971875,
+            "end": 152.37846875,
+            "speaker": "Speaker_2",
+            "text": "Yeah, the thing you also mentioned is you have to price in the fact that you're going to miss.",
+            "sentiment": {
+                "neg": 0.077,
+                "neu": 0.817,
+                "pos": 0.106,
+                "compound": 0.1531
+            }
+        },
+        {
+            "start": 153.15471875,
+            "end": 153.42471875,
+            "speaker": "Speaker_2",
+            "text": "Okay.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.2263
+            }
+        },
+        {
+            "start": 153.42471875,
+            "end": 162.72284375,
+            "speaker": "Speaker_1",
+            "text": "Yeah, the company, for you. And the meaning it gives you, right? There's a very famous like depression after start upon a solar company. Like they're like, this was my, this was me, like, who am I?",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.645,
+                "pos": 0.355,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 153.44159375,
+            "end": 154.99409375000002,
+            "speaker": "Speaker_2",
+            "text": "Yeah, the company. An immediate.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.476,
+                "pos": 0.524,
+                "compound": 0.296
+            }
+        },
+        {
+            "start": 162.79034375,
+            "end": 166.89096875,
+            "speaker": "Speaker_1",
+            "text": "and they immediately start building another one. You know, they can never get stopped. So.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "start": 167.12721875,
+            "end": 175.96971875,
+            "speaker": "Speaker_1",
+            "text": "I think it's good to keep working, you know, until you die, just keep working on cool stuff and you shoot in the retiree, you know, I think retirement's bad, probably.",
+            "sentiment": {
+                "neg": 0.251,
+                "neu": 0.615,
+                "pos": 0.133,
+                "compound": -0.6808
+            }
+        },
+        {
+            "start": 175.96971875,
+            "end": 175.98659375,
+            "speaker": "Speaker_2",
+            "text": "you",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        }
+    ],
+    "full_transcription": "Okay, so what about the exit? When and how to exit? Man, you shouldn't ask me because I never sold my company. And I've never You've never, all the successful stuff you've done, you've never sold it. Yeah, it's kind of sad, right? Like. I've been in, so I've been in a lot of acquisition like deals and stuff and I learn a lot about finance people as well there like manipulation and due diligence and then changing the valuation like people change the valuation after so they a lot of people string you on to acquire you and then it takes like six months it's like six to 12 months they want to see everything they want to see the your stripe and your code and whatever and then in the end they'll change the price to lower because you're already invested. So it's like a negotiation tactic, right? And like no, I don't want to sell, right? And the problem with my companies is like they make... 90% profit margin. So the multiple. companies get sold with multiple kinds of multiples of profit or revenue. and often the multiple is like three times, three times or four times or five times, revenue or profit. So in my case. they're all automated so I might as well wait three years and I get the same money as when I sell and then I can still sell the same company. You know, I mean, I can still sell for three five times. So. financially it doesn't really make sense to sell. Yeah. Yeah. Okay. Yeah. Yeah. Yeah. Unless the price high enough, like if the price gets to like six or seven or eight, I don't want to wait six years for the money, you know? But if you give me three, like three years nothing, like, I can wait. So I mean, they're really valuable stuff about the companies you create is not just the interface and the crowdsourced content, but the people themselves, like the user base. Yeah, but nominalist, it's a community, yeah. Yeah. So no one So I could see that being extremely valuable. I'm surprised I had not. I'm surprised I have not. It's like my baby. It's like my first product that took off. I don't really know if I want to sell it. It's like something you will be nice when you're old that you're still working on this. It's like a, it has like a mission which is like people should travel anywhere, people should travel anywhere, and they can work from, from anywhere and they can meet different cultures and that's a good way to make the world get better. If you go to China, live in China, you'll learn that they're nice people and a lot of stuff you hear about China's probably gone, a lot of stuff is true as well, but it's more, you know, you learn a lot from traveling and I think that's why it's like a cool product to like not sell... I have less emotional feeling with AI projects like photo like photo I, which I could sell, yeah. something Yeah, the thing you also mentioned is you have to price in the fact that you're going to miss. Okay. Yeah, the company, for you. And the meaning it gives you, right? There's a very famous like depression after start upon a solar company. Like they're like, this was my, this was me, like, who am I? Yeah, the company. An immediate. and they immediately start building another one. You know, they can never get stopped. So. I think it's good to keep working, you know, until you die, just keep working on cool stuff and you shoot in the retiree, you know, I think retirement's bad, probably. you",
+    "overall_sentiment": [
+        {
+            "sentence": "Okay, so what about the exit?",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.725,
+                "pos": 0.275,
+                "compound": 0.2263
+            }
+        },
+        {
+            "sentence": "When and how to exit?",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "Man, you shouldn't ask me because I never sold my company.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "And I've never You've never, all the successful stuff you've done, you've never sold it.",
+            "sentiment": {
+                "neg": 0.18,
+                "neu": 0.82,
+                "pos": 0.0,
+                "compound": -0.4717
+            }
+        },
+        {
+            "sentence": "Yeah, it's kind of sad, right?",
+            "sentiment": {
+                "neg": 0.354,
+                "neu": 0.417,
+                "pos": 0.229,
+                "compound": -0.2944
+            }
+        },
+        {
+            "sentence": "Like.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.3612
+            }
+        },
+        {
+            "sentence": "I've been in, so I've been in a lot of acquisition like deals and stuff and I learn a lot about finance people as well there like manipulation and due diligence and then changing the valuation like people change the valuation after so they a lot of people string you on to acquire you and then it takes like six months it's like six to 12 months they want to see everything they want to see the your stripe and your code and whatever and then in the end they'll change the price to lower because you're already invested.",
+            "sentiment": {
+                "neg": 0.041,
+                "neu": 0.797,
+                "pos": 0.161,
+                "compound": 0.8689
+            }
+        },
+        {
+            "sentence": "So it's like a negotiation tactic, right?",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.643,
+                "pos": 0.357,
+                "compound": 0.4173
+            }
+        },
+        {
+            "sentence": "And like no, I don't want to sell, right?",
+            "sentiment": {
+                "neg": 0.313,
+                "neu": 0.458,
+                "pos": 0.229,
+                "compound": 0.0201
+            }
+        },
+        {
+            "sentence": "And the problem with my companies is like they make... 90% profit margin.",
+            "sentiment": {
+                "neg": 0.149,
+                "neu": 0.552,
+                "pos": 0.298,
+                "compound": 0.4019
+            }
+        },
+        {
+            "sentence": "So the multiple.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "companies get sold with multiple kinds of multiples of profit or revenue.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.791,
+                "pos": 0.209,
+                "compound": 0.4404
+            }
+        },
+        {
+            "sentence": "and often the multiple is like three times, three times or four times or five times, revenue or profit.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.759,
+                "pos": 0.241,
+                "compound": 0.6597
+            }
+        },
+        {
+            "sentence": "So in my case.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "they're all automated so I might as well wait three years and I get the same money as when I sell and then I can still sell the same company.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.914,
+                "pos": 0.086,
+                "compound": 0.3321
+            }
+        },
+        {
+            "sentence": "You know, I mean, I can still sell for three five times.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "So.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "financially it doesn't really make sense to sell.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "Okay.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.2263
+            }
+        },
+        {
+            "sentence": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "Unless the price high enough, like if the price gets to like six or seven or eight, I don't want to wait six years for the money, you know?",
+            "sentiment": {
+                "neg": 0.039,
+                "neu": 0.801,
+                "pos": 0.16,
+                "compound": 0.5828
+            }
+        },
+        {
+            "sentence": "But if you give me three, like three years nothing, like, I can wait.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.629,
+                "pos": 0.371,
+                "compound": 0.7579
+            }
+        },
+        {
+            "sentence": "So I mean, they're really valuable stuff about the companies you create is not just the interface and the crowdsourced content, but the people themselves, like the user base.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.781,
+                "pos": 0.219,
+                "compound": 0.7181
+            }
+        },
+        {
+            "sentence": "Yeah, but nominalist, it's a community, yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.476,
+                "pos": 0.524,
+                "compound": 0.5267
+            }
+        },
+        {
+            "sentence": "Yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "So no one So I could see that being extremely valuable.",
+            "sentiment": {
+                "neg": 0.18,
+                "neu": 0.576,
+                "pos": 0.244,
+                "compound": 0.2263
+            }
+        },
+        {
+            "sentence": "I'm surprised I had not.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.612,
+                "pos": 0.388,
+                "compound": 0.2263
+            }
+        },
+        {
+            "sentence": "I'm surprised I have not.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.612,
+                "pos": 0.388,
+                "compound": 0.2263
+            }
+        },
+        {
+            "sentence": "It's like my baby.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.545,
+                "pos": 0.455,
+                "compound": 0.3612
+            }
+        },
+        {
+            "sentence": "It's like my first product that took off.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.737,
+                "pos": 0.263,
+                "compound": 0.3612
+            }
+        },
+        {
+            "sentence": "I don't really know if I want to sell it.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.817,
+                "pos": 0.183,
+                "compound": 0.144
+            }
+        },
+        {
+            "sentence": "It's like something you will be nice when you're old that you're still working on this.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.725,
+                "pos": 0.275,
+                "compound": 0.6486
+            }
+        },
+        {
+            "sentence": "It's like a, it has like a mission which is like people should travel anywhere, people should travel anywhere, and they can work from, from anywhere and they can meet different cultures and that's a good way to make the world get better.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.73,
+                "pos": 0.27,
+                "compound": 0.9062
+            }
+        },
+        {
+            "sentence": "If you go to China, live in China, you'll learn that they're nice people and a lot of stuff you hear about China's probably gone, a lot of stuff is true as well, but it's more, you know, you learn a lot from traveling and I think that's why it's like a cool product to like not sell...",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.761,
+                "pos": 0.239,
+                "compound": 0.9153
+            }
+        },
+        {
+            "sentence": "I have less emotional feeling with AI projects like photo like photo I, which I could sell, yeah.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.531,
+                "pos": 0.469,
+                "compound": 0.7736
+            }
+        },
+        {
+            "sentence": "something Yeah, the thing you also mentioned is you have to price in the fact that you're going to miss.",
+            "sentiment": {
+                "neg": 0.073,
+                "neu": 0.826,
+                "pos": 0.101,
+                "compound": 0.1531
+            }
+        },
+        {
+            "sentence": "Okay.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.0,
+                "pos": 1.0,
+                "compound": 0.2263
+            }
+        },
+        {
+            "sentence": "Yeah, the company, for you.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.645,
+                "pos": 0.355,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "And the meaning it gives you, right?",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "There's a very famous like depression after start upon a solar company.",
+            "sentiment": {
+                "neg": 0.269,
+                "neu": 0.543,
+                "pos": 0.188,
+                "compound": -0.2927
+            }
+        },
+        {
+            "sentence": "Like they're like, this was my, this was me, like, who am I?",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.571,
+                "pos": 0.429,
+                "compound": 0.7579
+            }
+        },
+        {
+            "sentence": "Yeah, the company.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.476,
+                "pos": 0.524,
+                "compound": 0.296
+            }
+        },
+        {
+            "sentence": "An immediate.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "and they immediately start building another one.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "You know, they can never get stopped.",
+            "sentiment": {
+                "neg": 0.0,
+                "neu": 0.783,
+                "pos": 0.217,
+                "compound": 0.1695
+            }
+        },
+        {
+            "sentence": "So.",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        },
+        {
+            "sentence": "I think it's good to keep working, you know, until you die, just keep working on cool stuff and you shoot in the retiree, you know, I think retirement's bad, probably.",
+            "sentiment": {
+                "neg": 0.251,
+                "neu": 0.615,
+                "pos": 0.133,
+                "compound": -0.6808
+            }
+        },
+        {
+            "sentence": "you",
+            "sentiment": { "neg": 0.0, "neu": 1.0, "pos": 0.0, "compound": 0.0 }
+        }
+    ],
+    "summary": "<TITLE: Negotiating Company Exit Strategies and Emotional Attachment>\n\n<SEP>Summary: The speaker discusses their experience with company acquisitions and sales, highlighting the challenges of navigating financial negotiations and the emotional attachment to one's business. They emphasize the importance of valuing the people behind a company, including its user base and community, which can make it difficult to sell. The speaker also touches on the idea that companies are often sold for multiples of their revenue or profit, but in cases where the company has a high profit margin, selling may not be the most financially appealing option.\n\n<SEP>Keywords: Company exit strategies, emotional attachment, financial negotiations, multiple sales, user base value\n\n<TITLE:Negotiating Company Exit Strategies and Emotional Attachment>\n\n<SEP>Summary: The speaker discusses their experience with company acquisitions and sales, highlighting the challenges of navigating financial negotiations and the emotional attachment to one's business. They emphasize the importance of valuing the people behind a company, including its user base and community, which can make it difficult to sell. The speaker also touches on the idea that companies are often sold for multiples of their revenue or profit, but in cases where the company has a high profit margin, selling may not be the most financially appealing option.\n\n<SEP>Keywords: Company exit strategies, emotional attachment, financial negotiations, multiple sales, user base value\n\n<TITLE:Negotiating Company Exit Strategies and Emotional Attachment>\n\n<SEP>Summary: The speaker discusses their experience with company acquisitions and sales, highlighting the challenges of navigating financial negotiations and the emotional attachment to one's business. They emphasize the importance of valuing the people behind a company, including its user base and community, which can make it difficult to sell. The speaker also touches on the idea that companies are often sold for multiples of their revenue or profit, but in cases where the company has a high profit margin, selling may not be the most financially appealing option.\n\n<SEP>Keywords: Company exit strategies, emotional attachment, financial negotiations, multiple sales, user base value",
+    "time_taken": 345.89943861961365
+}

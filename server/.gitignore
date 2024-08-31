@@ -7,3 +7,4 @@ audio/*
 practice.py
 *.txt
 *.rttm
+temp/*

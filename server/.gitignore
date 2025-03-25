@@ -1,0 +1,6 @@
+__pycache__
+.venv
+result_audio
+results
+temp
+.env
